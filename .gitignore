@@ -4,3 +4,4 @@ data/PyCon
 py/.ipynb_checkpoints/
 __*
 data
+logs
