@@ -8,16 +8,32 @@ with open data and Python
 import os
 import random
 import shutil
+import re
+
+class RunLocationError(Exception):
+    pass
+
+PROJECT_ROOT = os.getcwd()
+
+_pattern = re.compile("CNN-Sentinel$")
+_match = re.search(_pattern, PROJECT_ROOT)
+
+try:
+    if not _match:
+        raise RunLocationError
+except RunLocationError:
+    print("Run this from root of the project repository which should end be called 'CNN-Sentinel'")
 
 random.seed(42)
 # variables
 # root path to folders "AnnualCrop, Forest ..." in home ("~")
-path_to_all_images = "~/Documents/Data/EuroSAT/AllBands"
-path_to_all_images = r'C:\Users\Jens\Downloads\EuroSAT_RGB'
+path_to_all_images = "./data/original/EuroSATallBandsTIF"
+# path_to_all_images = "./data/original/EuroSATRGBTIF"
+
 # path to new created folders "train" and "validation" with subfolders
 # "AnnualCrop, Forest ..." in home ("~")
-path_to_split_datasets = "~/Documents/Data/PyCon/AllBands"
-path_to_split_datasets = r'C:\Users\Jens\Downloads\PyCon\RGB'
+path_to_split_datasets = "./data/ml_wrokflow/EuroSATallBandsTIF"
+# path_to_split_datasets = "./data/ml_wrokflow/EuroSATRGBTIF"
 # percentage of validation data (between 0 an 1)
 percentage_validation = 0.3
 # !!! If "True", complete "path_to_split_datasets" tree will be deleted !!!
