@@ -9,6 +9,7 @@ import os
 import random
 import shutil
 import re
+import sys
 
 class RunLocationError(Exception):
     pass
@@ -29,6 +30,17 @@ random.seed(42)
 # root path to folders "AnnualCrop, Forest ..." in home ("~")
 path_to_all_images = "./data/original/EuroSATallBandsTIF"
 # path_to_all_images = "./data/original/EuroSATRGBTIF"
+
+if len(os.listdir(path_to_all_images) ) == 0:
+    raise Exception("Directory is empty")
+else:    
+    print("Directory is not empty")
+    _classes = sorted(os.listdir(path_to_all_images))
+
+    assert(['AnnualCrop', 'Forest', 'HerbaceousVegetation', 'Highway', 'Industrial', 'Pasture', 'PermanentCrop', 'Residential', 'River', 'SeaLake'] == _classes)
+    
+    print(_classes)
+
 
 # path to new created folders "train" and "validation" with subfolders
 # "AnnualCrop, Forest ..." in home ("~")
