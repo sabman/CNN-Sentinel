@@ -17,7 +17,7 @@ from keras.callbacks import ModelCheckpoint, EarlyStopping
 from image_functions import simple_image_generator
 
 # variables
-path_to_split_datasets = "~/Documents/Data/PyCon/AllBands"
+path_to_split_datasets = "./data/ml_wrokflow/EuroSATallBandsTIF"
 use_vgg = False
 batch_size = 64
 
